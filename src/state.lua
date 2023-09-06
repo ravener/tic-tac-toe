@@ -35,12 +35,6 @@ function GameState:draw()
   return self.screen:draw()
 end
 
--- Draw without push resolution handling
--- needed for splash screen to render correctly
-function GameState:drawRaw()
-  return self.screen:drawRaw()
-end
-
 function GameState:keypressed(key, scancode, isrepeat)
   return self.screen:keypressed(key, scancode, isrepeat)
 end

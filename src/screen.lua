@@ -12,7 +12,6 @@ function Screen:show() end
 function Screen:dispose() end
 function Screen:update(dt) end
 function Screen:draw() end
-function Screen:drawRaw() end
 function Screen:keypressed(key, scancode, isrepeat) end
 function Screen:keyreleased(key, scancode) end
 function Screen:mousepressed(x, y, button, istouch, presses) end
