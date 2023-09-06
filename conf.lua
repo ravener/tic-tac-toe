@@ -1,5 +1,7 @@
 
 function love.conf(t)
+  t.version = "11.4"
+
   -- Disable modules we don't need.
   t.modules.physics = false
   t.modules.video = false
