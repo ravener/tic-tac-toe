@@ -5,6 +5,11 @@ local lume = require('libs.lume')
 
 -- Check if the given x/y coordinates overlaps a box of w/h at sx/sy
 function utils.overlaps(x, y, sx, sy, w, h)
+  -- Safe guard against invalid values.
+  if not x or not y or not sx or not sy or not w or not h then
+    return false
+  end
+
   return (x >= sx and x <= sx + w) and (y >= sy and y <= sy + h)
 end
 
