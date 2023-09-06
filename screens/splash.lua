@@ -20,7 +20,7 @@ function SplashScreen:show()
     log.debug('Loading music...')
     local music = love.audio.newSource('assets/music.ogg', 'stream')
     music:setLooping(true)
-    music:setVolume(0.3)
+    music:setVolume(0.5)
     music:play()
     self.game.assets.music = music
   end
