@@ -89,6 +89,6 @@ end
 
 function love.resize(w, h)
   -- ditto
-  if w > h then w, h = h, w end
+  if love.system.getOS() == 'Android' and w > h then w, h = h, w end
   push:resize(w, h)
 end

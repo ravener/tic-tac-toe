@@ -15,6 +15,7 @@ function GameScreen:new(game, mode)
   self.board = Board()
   self.alpha = 0
   self.winner = 0
+  self.start = 0
 
   -- Current player's turn, 1 is X, 2 is O
   -- This is consistent with the board treatment of values
@@ -171,9 +172,10 @@ function GameScreen:mousereleased(x, y)
   if self.alpha == 1 then
     if overlaps(dx, dy, 19, 52, 25, 7) then
       -- In the next round the first turn goes to the loser.
-      -- In case there is no winner (draw) it goes back to X being first.
+      -- In case there is no winner (draw) it changes players anyway.
       -- This only applies to pvp, in AI mode the player is always X
-      self.current = self.mode == 'ai' and 1 or self.board:check() == 1 and 2 or 1
+      self.current = self.mode == 'ai' and 1 or (self.board:check() or self.start) == 1 and 2 or 1
+      self.start = current
       self.board:reset()
       flux.to(self, 0.3, { alpha = 0 })
     elseif overlaps(dx, dy, 19, 62, 25, 7) then
