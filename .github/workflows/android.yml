@@ -35,7 +35,7 @@ jobs:
           bundle-id: "com.ravener.tictactoe"
           resource-path: "./android/res"
           love-ref: "11.4"
-          love-package: "./game.love"
+          love-package: "./src/game.love"
           product-name: "tictactoe"
           version-string: "1.0.0"
           version-code: 1
