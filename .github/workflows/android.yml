@@ -1,0 +1,47 @@
+name: android
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get additional dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y zip imagemagick
+
+      - name: Create .love package
+        run: cd src && zip -9 -r game.love .
+
+      - name: Create android icons
+        run: |
+          mkdir -p android/res/drawable-{mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}
+          convert src/assets/icon.png -filter point -resize 48x48 android/res/drawable-mdpi/love.png
+          convert src/assets/icon.png -filter point -resize 72x72 android/res/drawable-hdpi/love.png
+          convert src/assets/icon.png -filter point -resize 96x96 android/res/drawable-xhdpi/love.png
+          convert src/assets/icon.png -filter point -resize 144x144 android/res/drawable-xxhdpi/love.png
+          convert src/assets/icon.png -filter point -resize 192x192 android/res/drawable-xxxhdpi/love.png
+
+      - name: Build love android
+        id: build-love
+        uses: love-actions/love-actions-android@v1
+        with:
+          app-name: "Tic Tac Toe"
+          bundle-id: "com.ravener.tictactoe"
+          resource-path: "./android/res"
+          love-ref: "11.4"
+          love-package: "./game.love"
+          product-name: "tictactoe"
+          version-string: "1.0.0"
+          version-code: 1
+          output-folder: "./dist"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-debug
+          path: dist/tictactoe-debug.apk
