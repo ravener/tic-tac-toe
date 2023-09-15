@@ -49,4 +49,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: android-debug
-          path: dist/
+          path: dist/tictactoe-debug.apk
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-release
+          path: dist/tictactoe-release.apk
