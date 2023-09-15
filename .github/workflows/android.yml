@@ -40,9 +40,13 @@ jobs:
           version-string: "1.0.0"
           version-code: 1
           output-folder: "./dist"
+          keystore-alias: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+          keystore-base64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          keystore-key-password: ${{ secrets.ANDROID_KEYSTORE_KEYPASSWORD }}
+          keystore-store-password: ${{ secrets.ANDROID_KEYSTORE_STOREPASSWORD }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: android-debug
-          path: dist/tictactoe-debug.apk
+          path: dist/
