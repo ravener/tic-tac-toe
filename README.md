@@ -1,7 +1,7 @@
 # Tic Tac Toe
 A game of Tic Tac Toe made with [LÖVE](https://love2d.org)
 
-You can download prebuilt binaries for Windows, Linux and Android from my [itch.io page](https://ravenerr.itch.io/tic-tac-toe)
+You can download prebuilt binaries for Windows, Linux and Android from my [itch.io page](https://ravener.itch.io/tic-tac-toe)
 
 # Credits
 * Music from <https://freesound.org/people/Seth_Makes_Sounds/sounds/680562>
